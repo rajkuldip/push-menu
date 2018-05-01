@@ -1,0 +1,18 @@
+image: bravissimolabs/alpine-git:latest
+
+pipelines:
+  branches:
+    develop:
+      - step:
+          script:
+            - git push https://foo:$VSTS_TOKEN@aucklandtransport.visualstudio.com/at_journeyplanner/_git/journeyplanner_ui_new
+
+    release/*:
+      - step:
+          script:
+            - git push https://foo:$VSTS_TOKEN@aucklandtransport.visualstudio.com/at_journeyplanner/_git/journeyplanner_ui_new
+
+    master:
+      - step:
+          script:
+            - git push https://foo:$VSTS_TOKEN@aucklandtransport.visualstudio.com/at_journeyplanner/_git/journeyplanner_ui_new

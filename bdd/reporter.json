@@ -1,0 +1,12 @@
+{
+  "reporterEnabled": "mochawesome, mocha-junit-reporter",
+  "mochawesomeReporterOptions": {
+    "reportDir": "cypress/results",
+    "reportName": "Journey Planner",
+    "reportTitle": "Journey Planner BDD Tests",
+    "inlineAssets": true
+  },
+  "mochaJunitReporterReporterOptions": {
+    "mochaFile": "cypress/results/moe-test-output.xml"
+  }
+}

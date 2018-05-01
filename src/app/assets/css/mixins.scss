@@ -1,0 +1,41 @@
+@mixin respond-to($breakpoint, $min-max-width) {
+
+    $value: map-get($breakpoints, $breakpoint);
+
+    @if $value != null {
+
+        @media ($min-max-width: $value) {
+          @content;
+        }
+
+    } @else {
+
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+    }
+}
+
+@mixin accesibility-outline-focus {
+    &:focus{
+        outline: 0;
+        box-shadow: inset 0 0 0 0.2rem $accesibility-outline !important;
+        //!important here overwrites Bootstrap box-shadow
+    }
+}
+
+@mixin mobile-active-transition ($transition-background-color) {
+    transition: ease .3s;
+
+    &:focus{
+        background-color: $transition-background-color;
+    }
+}
+
+@mixin box-shadow-1 {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+@mixin box-shadow-light {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.24);
+}
+

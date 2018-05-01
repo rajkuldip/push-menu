@@ -1,0 +1,8 @@
+src/**/*.test.js
+src/**/*.test.jsx
+--require babel-register
+--require ignore-styles 
+--require ./tdd/setup.js 
+--reporter mocha-multi-reporters
+--reporter-options configFile=./tdd/reporters-config.json
+

@@ -1,0 +1,101 @@
+.message-container {
+    width: 100%;
+    position: relative;
+    background: $white;
+    color: $black;
+    padding: 0;
+    margin: 0;
+    transition: transform 100ms ease, -webkit-transform 100ms ease;
+    transform: translate3d(0%, 0%, 0);
+    &.active {
+        border-top-left-radius: 10px;
+        overflow: hidden;
+        transform: translate3d(40%, 5%, 0);
+    }
+}
+
+.message-header {
+    position:absolute;
+    width: 100%;
+    top:0;
+    left: 0;
+    background: rgba(51,116,156,.8);
+    color: $white;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.message-header__icon {
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+    border-radius: 50%;
+    outline: none;
+    background: transparent;
+    border: none;
+    &:active {
+        background: rgba(255,255,255, .5);
+    }
+    &:focus {
+        outline: none;
+    }
+    svg path {
+        fill: $white;
+    }
+}
+
+.message-header__title {
+    margin: 0;
+    text-align: center;
+}
+
+.messages {
+    overflow: auto;
+    height: 100%;
+    padding-top: 45px;
+
+    .messages__list {
+        border-bottom: 1px solid rgba(0,0,0,.13);
+        a {
+            display: flex;
+            padding: 10px 20px;
+            align-items: center;
+            width: 100%;
+            color: $black;
+            text-decoration: none;
+            &:hover {
+                text-decoration: none;
+                background: $font-color-offwhite;
+            }
+        }
+    }
+    .image-container {
+        width: 70px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid #f1ecec;
+        height: 70px;
+        padding: 5px;
+        margin-right: 20px;
+        background: $white;
+    }
+    .list-data__name {
+        font-weight: bold;
+        font-size: $font-size-large;
+        color: $font-color-blue;
+    }
+    .list-data__received-time {
+        display: flex;
+        align-items: center;
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+        i {
+            display: flex;
+            margin-right: 5px;
+        }
+    }
+}

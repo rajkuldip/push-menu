@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "image": "first.png",
+        "name": "Anna Conda",
+        "status": "I don't like jokes",
+        "receivedTime": "2 mins ago"
+    },
+    {
+        "id": 2,
+        "image": "second.png",
+        "name": "Petar Conda",
+        "status": "I don't like jokes",
+        "receivedTime": "5 mins ago"
+    },
+    {
+        "id": 3,
+        "image": "third.png",
+        "name": "John Conda",
+        "status": "I don't like jokes",
+        "receivedTime": "10 mins ago"
+    },
+    {
+        "id": 4,
+        "image": "fourth.png",
+        "name": "Paul Conda",
+        "status": "I don't like jokes",
+        "receivedTime": "20 mins ago"
+    },
+    {
+        "id": 5,
+        "image": "fifth.png",
+        "name": "Smith Conda",
+        "status": "I don't like jokes",
+        "receivedTime": "35 mins ago"
+    },
+    {
+        "id": 6,
+        "image": "first.png",
+        "name": "Julian Conda",
+        "status": "I don't like jokes",
+        "receivedTime": "45 mins ago"
+    },
+    {
+        "id": 7,
+        "image": "second.png",
+        "name": "Jimmy Conda",
+        "status": "I don't like jokes",
+        "receivedTime": "1 hour ago"
+    },
+    {
+        "id": 8,
+        "image": "third.png",
+        "name": "Kevin Conda",
+        "status": "I don't like jokes",
+        "receivedTime": "2 hours ago"
+    },
+    {
+        "id": 9,
+        "image": "fourth.png",
+        "name": "Methew Conda",
+        "status": "I don't like jokes",
+        "receivedTime": "3 hours ago"
+    },
+    {
+        "id": 10,
+        "image": "fifth.png",
+        "name": "Evi Conda",
+        "status": "I don't like jokes",
+        "receivedTime": "4 hours ago"
+    }
+]

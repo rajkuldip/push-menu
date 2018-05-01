@@ -1,0 +1,10 @@
+@import "./custom-bootstrap-theme.scss";
+
+@import "./variables.scss";
+@import "./mixins.scss";
+@import "./base.scss"; // Project's common and general styles
+
+
+@import "../../components/App/App.scss";
+@import "../../components/Navigation/Navigation.scss";
+@import "../../components/Messages/Messages.scss";

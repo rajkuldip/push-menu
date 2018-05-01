@@ -1,0 +1,27 @@
+html, body, #root {
+    height: 100%;
+    width: 100%;
+}
+body {
+    overflow: hidden;
+    font-family: "OpenSansFont", Helvetica, Arial;
+    background: url("../img/bg.jpg");
+    background-repeat: repeat;
+    color: white;
+    font-size: $font-size-medium;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+ul, li, p {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}

@@ -1,0 +1,35 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+bdd/node_modules
+
+# testing
+/coverage
+/bdd/cypress/results
+/bdd/cypress/videos
+/bdd/cypress/screenshots
+/tdd/reports
+
+# production
+/dist
+/build
+*.zip
+
+# misc
+.DS_Store
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+TODO.txt
+
+# Intellij project files
+*.iml
+*.ipr
+*.iws
+.idea
+
+# sonar working directory
+.scannerwork
+

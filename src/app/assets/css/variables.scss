@@ -1,0 +1,45 @@
+// ============== Custom Breakpoints (based on Bootstrap) ==============
+$breakpoints: (
+  "xs": 576px,
+  "sm": 769px,
+  "md": 992px,
+  "lg": 1200px
+);
+
+$custom-colors: (
+  "black": #000000,
+  "white": #ffffff,
+  "dark-blue": #4C5A67,
+  "header-blue": #5DABDB,
+  "off-white": #eeeeee
+);
+
+
+
+// ============== Fonts ==============
+$font-family-base: "Open Sans", sans-serif;
+$font-size-base: 16px;
+
+// Fonts Colors
+$font-color-black: map-get($custom-colors, "black");
+$font-color-white: map-get($custom-colors, "white");
+$font-color-blue: map-get($custom-colors, "dark-blue");;
+$font-color-offwhite: map-get($custom-colors, "off-white");
+// Fonts Sizes
+$font-size-extra-small: ($font-size-base * .625); // 10px;
+$font-size-small: ($font-size-base * .813); // 13px;
+$font-size-medium: ($font-size-base * .875); // 14px;
+$font-size-large: ($font-size-base * 1.063); // 17px;
+$font-size-extra-large: ($font-size-base * 1.563); // 25px;
+
+
+@font-face {
+    font-family: "OpenSansFont";
+    src: url("../fonts/OpenSans-Regular.ttf");
+}
+
+@font-face {
+    font-family: "OpenSansFont";
+    src: url("../fonts/OpenSans-Bold.ttf");
+    font-weight: bold;
+}

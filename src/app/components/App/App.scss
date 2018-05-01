@@ -1,0 +1,12 @@
+.app, .main-content {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+.main-content > .row {
+    height: 100%;
+    margin: 0;
+}
+.active > .row {
+    transform: translate3d(40%, 5%, 0);
+}

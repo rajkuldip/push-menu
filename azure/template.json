@@ -1,0 +1,166 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "profiles_cpr_ae_JourneyPlanner_name": {
+            "defaultValue": "cpr-ae-JourneyPlanner-dev",
+            "type": "String"
+        },
+        "serverfarms_sp_ae_JourneyPlanner_name": {
+            "defaultValue": "sp-ae-JourneyPlanner-dev",
+            "type": "String"
+        },
+        "storageAccounts_journeyplanner_name": {
+            "defaultValue": "journeyplannerdev",
+            "type": "String"
+        },
+        "endpoints_cdn_ae_JourneyPlanner_name": {
+            "defaultValue": "cdn-ae-JourneyPlanner-dev",
+            "type": "String"
+        },
+        "origins_cor_ae_JourneyPlanner_name": {
+            "defaultValue": "cor-ae-JourneyPlanner-dev",
+            "type": "String"
+        },
+        "origins_host_header_ae_JourneyPlanner_name": {
+            "defaultValue": "journeyplannerdev.blob.core.windows.net",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Journey Planner Profile.",
+            "type": "Microsoft.Cdn/profiles",
+            "sku": {
+                "name": "Standard_Verizon"
+            },
+            "name": "[parameters('profiles_cpr_ae_JourneyPlanner_name')]",
+            "apiVersion": "2016-04-02",
+            "location": "AustraliaEast",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceState": "Active"
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Journey Planner Storage.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "BlobStorage",
+            "name": "[parameters('storageAccounts_journeyplanner_name')]",
+            "apiVersion": "2017-10-01",
+            "location": "australiaeast",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Allow"
+                },
+                "supportsHttpsTrafficOnly": false,
+                "encryption": {
+                    "services": {
+                        "file": {
+                            "enabled": true
+                        },
+                        "blob": {
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                },
+                "accessTier": "Hot"
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Journey Planner Server Farms.",
+            "type": "Microsoft.Web/serverfarms",
+            "sku": {
+                "name": "F1",
+                "tier": "Free",
+                "size": "F1",
+                "family": "F",
+                "capacity": 0
+            },
+            "kind": "app",
+            "name": "[parameters('serverfarms_sp_ae_JourneyPlanner_name')]",
+            "apiVersion": "2016-09-01",
+            "location": "Australia East",
+            "scale": null,
+            "properties": {
+                "name": "[parameters('serverfarms_sp_ae_JourneyPlanner_name')]",
+                "workerTierName": null,
+                "adminSiteName": null,
+                "hostingEnvironmentProfile": null,
+                "perSiteScaling": false,
+                "reserved": false,
+                "targetWorkerCount": 0,
+                "targetWorkerSizeId": 0
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Journey Planner Endpoints.",
+            "type": "Microsoft.Cdn/profiles/endpoints",
+            "name": "[concat(parameters('profiles_cpr_ae_JourneyPlanner_name'), '/', parameters('endpoints_cdn_ae_JourneyPlanner_name'))]",
+            "apiVersion": "2016-04-02",
+            "location": "AustraliaEast",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "originHostHeader": "[parameters('origins_host_header_ae_JourneyPlanner_name')]",
+                "isHttpAllowed": false,
+                "isHttpsAllowed": true,
+                "queryStringCachingBehavior": "IgnoreQueryString",
+                "originPath": null,
+                "origins": [
+                    {
+                        "name": "[parameters('origins_cor_ae_JourneyPlanner_name')]",
+                        "properties": {
+                            "hostName": "[parameters('origins_host_header_ae_JourneyPlanner_name')]",
+                            "httpPort": null,
+                            "httpsPort": null
+                        }
+                    }
+                ],
+                "contentTypesToCompress": [
+                    "text/plain",
+                    "text/html",
+                    "text/css",
+                    "application/x-javascript",
+                    "text/javascript"
+                ],
+                "isCompressionEnabled": true
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Cdn/profiles', parameters('profiles_cpr_ae_JourneyPlanner_name'))]"
+            ]
+        },
+        {
+            "comments": "Journey Planner Origins.",
+            "type": "Microsoft.Cdn/profiles/endpoints/origins",
+            "name": "[concat(parameters('profiles_cpr_ae_JourneyPlanner_name'), '/', parameters('endpoints_cdn_ae_JourneyPlanner_name'), '/', parameters('origins_cor_ae_JourneyPlanner_name'))]",
+            "apiVersion": "2016-04-02",
+            "scale": null,
+            "properties": {
+                "hostName": "[parameters('origins_host_header_ae_JourneyPlanner_name')]",
+                "httpPort": null,
+                "httpsPort": null
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Cdn/profiles', parameters('profiles_cpr_ae_JourneyPlanner_name'))]",
+                "[resourceId('Microsoft.Cdn/profiles/endpoints', parameters('profiles_cpr_ae_JourneyPlanner_name'), parameters('endpoints_cdn_ae_JourneyPlanner_name'))]"
+            ]
+        }
+    ]
+}

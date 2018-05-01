@@ -1,0 +1,13 @@
+{
+    "baseUrl": "http://localhost:9000/",
+    "reporter": "mocha-multi-reporters",
+    "videoRecording": false,
+    "screenshotOnHeadlessFailure": false,
+    "trashAssetsBeforeHeadlessRuns": false,
+    "viewportWidth": 1170,
+    "viewportHeight": 660,
+    "reporterOptions": {
+        "toConsole": true,
+        "configFile": "reporter.json"
+    }
+}
